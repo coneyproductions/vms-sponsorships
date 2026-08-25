@@ -22,7 +22,21 @@ class VMS_Sponsorships_Shortcodes {
         add_shortcode('vms_sponsor_email', array($this, 'sponsor_email'));
         add_shortcode('vms_sponsor_season', array($this, 'sponsor_season'));
         add_action('template_redirect', array($this, 'handle_sponsor_redirect'));
-        add_action('tribe_events_single_event_after_the_meta', array($this, 'render_automatic_event_page_banner'), 35);
+        add_action('init', array($this, 'register_automatic_event_page_banner'), 99);
+    }
+
+    public function register_automatic_event_page_banner() {
+        static $registered = false;
+        if ($registered) {
+            return;
+        }
+        $registered = true;
+
+        add_action(
+            $this->event_page_commerce_hook(),
+            array($this, 'render_automatic_event_page_banner'),
+            $this->before_commerce_priority()
+        );
     }
 
     public function sponsor_event($atts) {
@@ -153,6 +167,31 @@ class VMS_Sponsorships_Shortcodes {
         }
 
         echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
+
+    private function event_page_commerce_hook() {
+        if (function_exists('vms_event_details_commerce_hook')) {
+            return vms_event_details_commerce_hook();
+        }
+
+        $allowed_hooks = array(
+            'tribe_events_single_event_after_the_meta',
+            'tribe_events_single_event_before_the_meta',
+            'tribe_events_single_event_after_the_content',
+            'tribe_events_single_event_before_the_content',
+        );
+        $hook = 'tribe_events_single_event_after_the_meta';
+        if (class_exists('Tribe__Settings_Manager') && method_exists('Tribe__Settings_Manager', 'get_option')) {
+            $hook = (string) Tribe__Settings_Manager::get_option('ticket-commerce-form-location', $hook);
+        }
+
+        return in_array($hook, $allowed_hooks, true) ? $hook : 'tribe_events_single_event_after_the_meta';
+    }
+
+    private function before_commerce_priority() {
+        return function_exists('vms_event_details_before_commerce_priority')
+            ? vms_event_details_before_commerce_priority()
+            : 4;
     }
 
     public function handle_sponsor_redirect() {

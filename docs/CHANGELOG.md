@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.7.1
+
+Compatibility backport for VMS External Ticketing.
+
+### Fixed
+
+- Mounted automatic event sponsorship at priority 4 on the configured Event Tickets commerce hook so it precedes native and external commerce at priority 5.
+- Added request-local event-slot idempotency so an existing manual sponsor shortcode and automatic placement render only one sponsor.
+
 ## 0.1.7
 
 Local-only sponsorship polish for the public inquiry page layout and sales copy.

@@ -2,7 +2,12 @@
 
 Premium VMS add-on for sponsorship applications, packages, event/season assignments, sponsor displays, controlled physical banner inventory, asset approvals, notifications, and lightweight reporting.
 
-Version: `0.1.7`
+Version: `0.1.7.1`
+
+## 0.1.7.1 external ticketing compatibility
+
+- Places the automatic event sponsor immediately before native or external ticket commerce at the configured Event Tickets location.
+- Prevents a manual sponsor shortcode and the automatic placement from rendering the same event slot twice in one request.
 
 ## 0.1.7 sponsorship polish
 

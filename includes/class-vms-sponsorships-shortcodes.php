@@ -17,6 +17,21 @@ class VMS_Sponsorships_Shortcodes {
         add_shortcode('vms_sponsor_email', array($this, 'sponsor_email'));
         add_shortcode('vms_sponsor_season', array($this, 'sponsor_season'));
         add_action('template_redirect', array($this, 'handle_sponsor_redirect'));
+        add_action('init', array($this, 'register_automatic_event_page_banner'), 99);
+    }
+
+    public function register_automatic_event_page_banner() {
+        static $registered = false;
+        if ($registered) {
+            return;
+        }
+        $registered = true;
+
+        add_action(
+            $this->event_page_commerce_hook(),
+            array($this, 'render_automatic_event_page_banner'),
+            $this->before_commerce_priority()
+        );
     }
 
     public function sponsor_event($atts) {
@@ -56,7 +71,20 @@ class VMS_Sponsorships_Shortcodes {
             'slot' => 'presenting',
         ), $atts, 'vms_sponsor_placeholder');
 
-        return $this->render_placeholder(absint($atts['event_id']), sanitize_key($atts['slot']), 'email' === sanitize_key($atts['type']));
+        $event_id = absint($atts['event_id']);
+        $slot = sanitize_key($atts['slot']);
+        $email_safe = 'email' === sanitize_key($atts['type']);
+
+        if (!$email_safe && $event_id > 0 && $this->event_slot_was_rendered($event_id, $slot)) {
+            return '';
+        }
+
+        $markup = $this->render_placeholder($event_id, $slot, $email_safe);
+        if (!$email_safe && $event_id > 0 && $markup !== '') {
+            $this->mark_event_slot_rendered($event_id, $slot);
+        }
+
+        return $markup;
     }
 
     public function sponsor_season($atts) {
@@ -89,13 +117,86 @@ class VMS_Sponsorships_Shortcodes {
             return '';
         }
 
+        if (!$email_safe && $this->event_slot_was_rendered($event_id, $slot)) {
+            return '';
+        }
+
         $assignment = $this->repo->get_public_assignment($event_id, $slot);
         if ($assignment) {
             $this->maybe_track_impression($assignment, $email_safe);
-            return $this->render_assignment($assignment, $email_safe);
+            $markup = $this->render_assignment($assignment, $email_safe);
+        } else {
+            $markup = $show_placeholder ? $this->render_placeholder($event_id, $slot, $email_safe) : '';
         }
 
-        return $show_placeholder ? $this->render_placeholder($event_id, $slot, $email_safe) : '';
+        if (!$email_safe && $markup !== '') {
+            $this->mark_event_slot_rendered($event_id, $slot);
+        }
+
+        return $markup;
+    }
+
+    public function render_automatic_event_page_banner() {
+        if (is_admin() || !function_exists('is_singular') || !is_singular('tribe_events')) {
+            return;
+        }
+
+        $event_id = function_exists('get_queried_object_id') ? absint(get_queried_object_id()) : 0;
+        if ($event_id <= 0 || get_post_type($event_id) !== 'tribe_events') {
+            return;
+        }
+
+        $markup = $this->render_assignment_or_placeholder($event_id, 'presenting', true, false);
+        if ($markup === '') {
+            return;
+        }
+
+        echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
+
+    private function event_page_commerce_hook() {
+        if (function_exists('vms_event_details_commerce_hook')) {
+            return vms_event_details_commerce_hook();
+        }
+
+        $allowed_hooks = array(
+            'tribe_events_single_event_after_the_meta',
+            'tribe_events_single_event_before_the_meta',
+            'tribe_events_single_event_after_the_content',
+            'tribe_events_single_event_before_the_content',
+        );
+        $hook = 'tribe_events_single_event_after_the_meta';
+        if (class_exists('Tribe__Settings_Manager') && method_exists('Tribe__Settings_Manager', 'get_option')) {
+            $hook = (string) Tribe__Settings_Manager::get_option('ticket-commerce-form-location', $hook);
+        }
+
+        return in_array($hook, $allowed_hooks, true) ? $hook : 'tribe_events_single_event_after_the_meta';
+    }
+
+    private function before_commerce_priority() {
+        return function_exists('vms_event_details_before_commerce_priority')
+            ? vms_event_details_before_commerce_priority()
+            : 4;
+    }
+
+    private function event_slot_was_rendered($event_id, $slot) {
+        $rendered = isset($GLOBALS['vms_sponsorships_event_page_banner_rendered']) && is_array($GLOBALS['vms_sponsorships_event_page_banner_rendered'])
+            ? $GLOBALS['vms_sponsorships_event_page_banner_rendered']
+            : array();
+
+        return !empty($rendered[$this->event_slot_render_key($event_id, $slot)]);
+    }
+
+    private function mark_event_slot_rendered($event_id, $slot) {
+        if (!isset($GLOBALS['vms_sponsorships_event_page_banner_rendered']) || !is_array($GLOBALS['vms_sponsorships_event_page_banner_rendered'])) {
+            $GLOBALS['vms_sponsorships_event_page_banner_rendered'] = array();
+        }
+
+        $GLOBALS['vms_sponsorships_event_page_banner_rendered'][$this->event_slot_render_key($event_id, $slot)] = true;
+    }
+
+    private function event_slot_render_key($event_id, $slot) {
+        return absint($event_id) . ':' . sanitize_key($slot);
     }
 
     private function render_assignment($assignment, $email_safe = false) {

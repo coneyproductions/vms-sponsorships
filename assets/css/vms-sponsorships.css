@@ -1,0 +1,1017 @@
+.vms-sponsor-block,
+.vms-sponsor-placeholder {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 14px;
+    padding: 18px;
+    margin: 18px 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.vms-sponsor-block__eyebrow,
+.vms-sponsor-placeholder__eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 8px;
+}
+
+.vms-sponsor-block__logo-wrap {
+    margin: 8px auto 10px;
+}
+
+.vms-sponsor-block__logo {
+    max-width: min(260px, 100%);
+    max-height: 120px;
+    width: auto;
+    height: auto;
+}
+
+.vms-sponsor-block__name,
+.vms-sponsor-placeholder__heading {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.25;
+}
+
+.vms-sponsor-block__tagline,
+.vms-sponsor-placeholder__body {
+    margin-top: 8px;
+    opacity: 0.82;
+}
+
+.vms-sponsor-placeholder__button,
+.vms-sponsor-asset-form button {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    background: transparent;
+    cursor: pointer;
+}
+
+.vms-sponsor-banner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.9fr);
+    container: sponsor-banner / inline-size;
+    gap: 24px;
+    align-items: center;
+    overflow: hidden;
+    margin: 24px 0;
+    padding: 24px;
+    border-radius: 22px;
+    border: 1px solid rgba(148, 163, 184, 0.26);
+    color: #f8fafc;
+    background:
+        radial-gradient(circle at top left, rgba(251, 191, 36, 0.24), transparent 34%),
+        linear-gradient(135deg, #0f172a 0%, #162033 54%, #312e81 100%);
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.2);
+}
+
+.vms-sponsor-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(125deg, rgba(255, 255, 255, 0.04), transparent 30%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 12px, transparent 12px 28px);
+    pointer-events: none;
+}
+
+.vms-sponsor-banner--assigned {
+    background:
+        radial-gradient(circle at top left, rgba(45, 212, 191, 0.24), transparent 34%),
+        linear-gradient(135deg, #082f49 0%, #0f172a 58%, #1e293b 100%);
+}
+
+.vms-sponsor-banner--unsold {
+    background:
+        radial-gradient(circle at top left, rgba(251, 191, 36, 0.28), transparent 34%),
+        linear-gradient(135deg, #111827 0%, #1f2937 52%, #7c2d12 100%);
+}
+
+.vms-sponsor-banner__content,
+.vms-sponsor-banner__media {
+    position: relative;
+    z-index: 1;
+}
+
+.vms-sponsor-banner--text-only {
+    grid-template-columns: 1fr;
+}
+
+.vms-sponsor-banner--text-only .vms-sponsor-banner__content {
+    max-width: 52rem;
+}
+
+.vms-sponsor-banner--artwork-wide {
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.vms-sponsor-banner--artwork-wide .vms-sponsor-banner__content {
+    max-width: 54rem;
+}
+
+.vms-sponsor-banner--artwork-portrait {
+    grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.72fr);
+    align-items: stretch;
+}
+
+.vms-sponsor-banner__eyebrow,
+.vms-sponsor-banner__slot,
+.vms-sponsor-banner__title,
+.vms-sponsor-banner__body {
+    margin: 0;
+}
+
+.vms-sponsor-banner__eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(248, 250, 252, 0.72);
+}
+
+.vms-sponsor-banner__slot {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.vms-sponsor-banner__title {
+    margin-top: 12px;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    line-height: 0.98;
+    font-weight: 800;
+    text-wrap: balance;
+}
+
+.vms-sponsor-banner--unsold .vms-sponsor-banner__title {
+    margin-top: 0;
+}
+
+.vms-sponsor-banner__body {
+    margin-top: 14px;
+    max-width: 42rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(248, 250, 252, 0.9);
+}
+
+.vms-sponsor-banner__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    min-height: 48px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #f8fafc;
+    color: #111827;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid rgba(248, 250, 252, 0.9);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+}
+
+.vms-sponsor-banner__button:hover {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+.vms-sponsor-banner__media {
+    display: grid;
+    gap: 14px;
+    justify-items: stretch;
+    align-self: stretch;
+}
+
+.vms-sponsor-banner__badge {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(248, 250, 252, 0.14);
+    border: 1px solid rgba(248, 250, 252, 0.16);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.vms-sponsor-banner__badge--inline {
+    margin-bottom: 14px;
+}
+
+.vms-sponsor-banner__logo,
+.vms-sponsor-banner__inventory-tile,
+.vms-sponsor-banner__monogram,
+.vms-sponsor-banner__artwork {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(248, 250, 252, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.vms-sponsor-banner__logo,
+.vms-sponsor-banner__inventory-tile,
+.vms-sponsor-banner__monogram {
+    min-height: 220px;
+}
+
+.vms-sponsor-banner__logo {
+    display: block;
+    object-fit: contain;
+    max-height: 260px;
+    padding: 26px;
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.vms-sponsor-banner__artwork {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    max-height: 340px;
+    padding: 16px;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+        rgba(255, 255, 255, 0.04);
+}
+
+.vms-sponsor-banner__artwork-variant {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.vms-sponsor-banner__artwork-variant--mobile {
+    display: none;
+}
+
+.vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork,
+.vms-sponsor-banner__artwork--desktop-wide {
+    min-height: 0;
+    max-height: none;
+    padding: 14px;
+    overflow: visible;
+}
+
+.vms-sponsor-banner--artwork-portrait .vms-sponsor-banner__artwork,
+.vms-sponsor-banner__artwork--desktop-portrait {
+    min-height: 280px;
+    max-height: 440px;
+    padding: 14px;
+}
+
+.vms-sponsor-banner__image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 308px;
+}
+
+.vms-sponsor-banner__artwork-variant--desktop-wide .vms-sponsor-banner__image,
+.vms-sponsor-banner__artwork-variant--mobile-wide .vms-sponsor-banner__image,
+.vms-sponsor-banner--artwork-wide .vms-sponsor-banner__image,
+.vms-sponsor-banner__artwork--desktop-wide .vms-sponsor-banner__image {
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+}
+
+.vms-sponsor-banner--artwork-portrait .vms-sponsor-banner__image,
+.vms-sponsor-banner__artwork--desktop-portrait .vms-sponsor-banner__image {
+    width: auto;
+    max-width: 100%;
+    max-height: 412px;
+    margin: 0 auto;
+}
+
+.vms-sponsor-banner__inventory-tile,
+.vms-sponsor-banner__monogram {
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.vms-sponsor-banner__inventory-tile {
+    padding: 24px;
+    background:
+        linear-gradient(140deg, rgba(251, 191, 36, 0.3), rgba(249, 115, 22, 0.18)),
+        rgba(255, 255, 255, 0.06);
+}
+
+.vms-sponsor-banner__inventory-tile span,
+.vms-sponsor-banner__inventory-tile strong {
+    display: block;
+}
+
+.vms-sponsor-banner__inventory-tile span {
+    font-size: 0.86rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(248, 250, 252, 0.74);
+}
+
+.vms-sponsor-banner__inventory-tile strong,
+.vms-sponsor-banner__monogram {
+    font-size: clamp(2rem, 7vw, 3.8rem);
+    font-weight: 800;
+}
+
+.vms-sponsor-banner__monogram {
+    padding: 24px;
+    background:
+        radial-gradient(circle at top, rgba(45, 212, 191, 0.22), transparent 44%),
+        rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+    letter-spacing: 0.08em;
+}
+
+@container sponsor-banner (max-width: 700px) {
+    .vms-sponsor-banner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .vms-sponsor-banner__media {
+        order: -1;
+    }
+
+    .vms-sponsor-banner__logo,
+    .vms-sponsor-banner__inventory-tile,
+    .vms-sponsor-banner__monogram {
+        min-height: 180px;
+    }
+
+    .vms-sponsor-banner__artwork {
+        min-height: 220px;
+        max-height: 360px;
+    }
+
+    .vms-sponsor-banner__image {
+        max-height: 328px;
+    }
+
+    .vms-sponsor-banner__artwork--has-mobile-variant .vms-sponsor-banner__artwork-variant--desktop {
+        display: none;
+    }
+
+    .vms-sponsor-banner__artwork--has-mobile-variant .vms-sponsor-banner__artwork-variant--mobile {
+        display: flex;
+    }
+
+    .vms-sponsor-banner--mobile-wide-fallback .vms-sponsor-banner__artwork {
+        min-height: 0;
+        max-height: none;
+        padding: 12px;
+        overflow: visible;
+    }
+
+    .vms-sponsor-banner--mobile-wide-fallback .vms-sponsor-banner__image {
+        width: 100%;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-standard {
+        min-height: 220px;
+        max-height: 360px;
+        padding: 16px;
+        overflow: hidden;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-standard,
+    .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-standard {
+        width: min(100%, 27rem);
+        min-height: 0;
+        max-height: none;
+        padding: 14px;
+        overflow: visible;
+        margin-inline: auto;
+        justify-self: center;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork--mobile-standard .vms-sponsor-banner__image,
+    .vms-sponsor-banner__artwork--mobile-standard .vms-sponsor-banner__image {
+        width: auto;
+        max-width: 100%;
+        max-height: none;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-wide {
+        min-height: 0;
+        max-height: none;
+        padding: 12px;
+        overflow: visible;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-wide .vms-sponsor-banner__image {
+        width: 100%;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-portrait {
+        min-height: 240px;
+        max-height: none;
+        padding: 14px;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-portrait,
+    .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-portrait {
+        width: min(100%, 22rem);
+        min-height: 0;
+        padding: 14px;
+        overflow: visible;
+        margin-inline: auto;
+        justify-self: center;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork--mobile-portrait .vms-sponsor-banner__image,
+    .vms-sponsor-banner__artwork--mobile-portrait .vms-sponsor-banner__image {
+        width: auto;
+        max-width: 100%;
+        max-height: none;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+.vms-sponsor-block--email,
+.vms-sponsor-placeholder--email {
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+}
+
+.vms-sponsor-application-form,
+.vms-sponsor-asset-form {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 14px;
+    padding: 18px;
+    margin: 18px 0;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+}
+
+.vms-sponsor-inquiry__packages,
+.vms-sponsor-inquiry__visibility,
+.vms-sponsor-inquiry__form-wrap,
+.vms-sponsor-application-form {
+    scroll-margin-top: 120px;
+}
+
+.vms-sponsor-form__row {
+    margin-bottom: 14px;
+}
+
+.vms-sponsor-application-form label,
+.vms-sponsor-asset-form label {
+    display: block;
+    color: #162033;
+    font-weight: 600;
+}
+
+.vms-sponsor-application-form input[type="text"],
+.vms-sponsor-application-form input[type="email"],
+.vms-sponsor-application-form input[type="number"],
+.vms-sponsor-application-form input[type="url"],
+.vms-sponsor-application-form select,
+.vms-sponsor-application-form textarea {
+    width: 100%;
+    max-width: 620px;
+    margin-top: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 10px;
+    padding: 12px 14px;
+    background: #fff;
+    color: #162033;
+}
+
+.vms-sponsor-application-form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.vms-sponsor-application-form input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.vms-sponsor-form__context {
+    margin-bottom: 20px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(8, 47, 73, 0.06), rgba(180, 83, 9, 0.08));
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.vms-sponsor-form__context-title {
+    display: block;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: #0f172a;
+}
+
+.vms-sponsor-form__context-meta,
+.vms-sponsor-inquiry__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.vms-sponsor-form__context-meta span,
+.vms-sponsor-inquiry__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    font-size: 0.88rem;
+}
+
+.vms-sponsor-apply-page {
+    padding: 48px 20px 72px;
+}
+
+.vms-sponsor-apply-page__inner {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.vms-sponsor-apply-page__inner > h1,
+.vms-sponsor-apply-page__inner > p {
+    max-width: 760px;
+    padding: 0 4px;
+}
+
+.vms-sponsor-inquiry {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.vms-sponsor-inquiry__hero,
+.vms-sponsor-inquiry__packages,
+.vms-sponsor-inquiry__visibility,
+.vms-sponsor-inquiry__form-wrap {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    padding: 24px;
+    margin: 18px 0;
+}
+
+.vms-sponsor-inquiry__eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #92400e;
+}
+
+.vms-sponsor-inquiry__title {
+    margin: 10px 0 12px;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.02;
+    color: #111827;
+}
+
+.vms-sponsor-inquiry__context-line {
+    margin: 0 0 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.vms-sponsor-inquiry__intro,
+.vms-sponsor-inquiry__note,
+.vms-sponsor-inquiry__section-head p,
+.vms-sponsor-package-card__body,
+.vms-sponsor-form__context p {
+    color: #334155;
+}
+
+.vms-sponsor-inquiry__note {
+    margin-top: 10px;
+}
+
+.vms-sponsor-inquiry__trade-note,
+.vms-sponsor-field__hint {
+    margin-top: 10px;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.vms-sponsor-field__hint {
+    margin-bottom: 0;
+}
+
+.vms-sponsor-inquiry__primary,
+.vms-sponsor-package-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    min-height: 46px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #0f172a;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #0f172a;
+    font-weight: 700;
+}
+
+.vms-sponsor-inquiry__primary:hover,
+.vms-sponsor-package-card__cta:hover {
+    background: #1e293b;
+    border-color: #1e293b;
+    color: #fff;
+}
+
+.vms-sponsor-inquiry__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    background: #fff;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.vms-sponsor-inquiry__secondary:hover {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.vms-sponsor-inquiry__section-head h2 {
+    margin-bottom: 6px;
+}
+
+.vms-sponsor-visibility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.vms-sponsor-visibility-card {
+    min-height: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: linear-gradient(180deg, rgba(255, 251, 235, 0.7), rgba(255, 255, 255, 1));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.vms-sponsor-visibility-card__label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #92400e;
+}
+
+.vms-sponsor-visibility-card__value {
+    display: block;
+    color: #0f172a;
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+.vms-sponsor-visibility__updated {
+    margin: 16px 0 0;
+    color: #64748b;
+    font-size: 0.92rem;
+}
+
+.vms-sponsor-package-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.vms-sponsor-package-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.9), rgba(255, 255, 255, 1));
+}
+
+.vms-sponsor-package-card.is-selected {
+    border-color: rgba(180, 83, 9, 0.45);
+    box-shadow: inset 0 0 0 1px rgba(180, 83, 9, 0.18);
+}
+
+.vms-sponsor-package-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.vms-sponsor-package-card__name {
+    font-size: 1.05rem;
+    color: #111827;
+}
+
+.vms-sponsor-package-card__price {
+    white-space: nowrap;
+    font-weight: 700;
+    color: #92400e;
+}
+
+.vms-sponsor-package-card__body p {
+    margin: 0;
+}
+
+.vms-sponsor-package-card__body {
+    line-height: 1.55;
+}
+
+.vms-sponsor-package-card__facts {
+    margin: 0;
+    padding-left: 18px;
+    color: #334155;
+    line-height: 1.5;
+}
+
+.vms-sponsor-package-card__cta {
+    margin-top: auto;
+}
+
+.vms-sponsor-inquiry__secondary-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.vms-sponsor-inquiry__secondary-cta p {
+    margin: 0;
+    color: #334155;
+}
+
+.vms-sponsor-form__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+    min-height: 52px;
+    margin-top: 20px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 1px solid #0f172a;
+    background: #0f172a;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+}
+
+.vms-sponsor-form__submit:hover,
+.vms-sponsor-form__submit:focus-visible {
+    background: #1e293b;
+    border-color: #1e293b;
+    color: #fff;
+}
+
+.vms-sponsor-form__submit:disabled,
+.vms-sponsor-form__submit[aria-disabled="true"] {
+    background: #94a3b8;
+    border-color: #94a3b8;
+    color: #f8fafc;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.vms-sponsor-inquiry__primary:focus-visible,
+.vms-sponsor-package-card__cta:focus-visible,
+.vms-sponsor-inquiry__secondary:focus-visible,
+.vms-sponsor-banner__button:focus-visible,
+.vms-sponsor-form__submit:focus-visible,
+.vms-sponsor-asset-form button:focus-visible {
+    outline: 3px solid rgba(180, 83, 9, 0.4);
+    outline-offset: 3px;
+}
+
+.vms-sponsor-notice {
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 14px 0;
+}
+
+.vms-sponsor-notice--success {
+    border: 1px solid rgba(0, 128, 0, 0.25);
+}
+
+.vms-sponsor-notice--error {
+    border: 1px solid rgba(180, 0, 0, 0.25);
+}
+
+@media (min-width: 700px) {
+    .vms-sponsor-package-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 980px) {
+    .vms-sponsor-package-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .vms-sponsor-package-card {
+        grid-column: span 2;
+    }
+
+    .vms-sponsor-package-card--lead {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 782px) {
+    .vms-sponsor-banner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .vms-sponsor-banner__media {
+        order: -1;
+    }
+
+    .vms-sponsor-banner__logo,
+    .vms-sponsor-banner__inventory-tile,
+    .vms-sponsor-banner__monogram {
+        min-height: 180px;
+    }
+
+    .vms-sponsor-banner__artwork {
+        min-height: 220px;
+        max-height: 360px;
+    }
+
+    .vms-sponsor-banner__image {
+        max-height: 328px;
+    }
+
+    .vms-sponsor-banner__artwork--has-mobile-variant .vms-sponsor-banner__artwork-variant--desktop {
+        display: none;
+    }
+
+    .vms-sponsor-banner__artwork--has-mobile-variant .vms-sponsor-banner__artwork-variant--mobile {
+        display: flex;
+    }
+
+    .vms-sponsor-banner--mobile-wide-fallback .vms-sponsor-banner__artwork {
+        min-height: 0;
+        max-height: none;
+        padding: 12px;
+        overflow: visible;
+    }
+
+    .vms-sponsor-banner--mobile-wide-fallback .vms-sponsor-banner__image {
+        width: 100%;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-standard {
+        min-height: 220px;
+        max-height: 360px;
+        padding: 16px;
+        overflow: hidden;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-standard,
+    .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-standard {
+        width: min(100%, 27rem);
+        min-height: 0;
+        max-height: none;
+        padding: 14px;
+        overflow: visible;
+        margin-inline: auto;
+        justify-self: center;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork--mobile-standard .vms-sponsor-banner__image,
+    .vms-sponsor-banner__artwork--mobile-standard .vms-sponsor-banner__image {
+        width: auto;
+        max-width: 100%;
+        max-height: none;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-wide {
+        min-height: 0;
+        max-height: none;
+        padding: 12px;
+        overflow: visible;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-wide .vms-sponsor-banner__image {
+        width: 100%;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .vms-sponsor-banner__artwork--mobile-portrait {
+        min-height: 240px;
+        max-height: none;
+        padding: 14px;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-portrait,
+    .vms-sponsor-banner__artwork.vms-sponsor-banner__artwork--mobile-portrait {
+        width: min(100%, 22rem);
+        min-height: 0;
+        padding: 14px;
+        overflow: visible;
+        margin-inline: auto;
+        justify-self: center;
+    }
+
+    .vms-sponsor-banner--artwork-wide .vms-sponsor-banner__artwork--mobile-portrait .vms-sponsor-banner__image,
+    .vms-sponsor-banner__artwork--mobile-portrait .vms-sponsor-banner__image {
+        width: auto;
+        max-width: 100%;
+        max-height: none;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .vms-sponsor-inquiry__hero,
+    .vms-sponsor-inquiry__packages,
+    .vms-sponsor-inquiry__visibility,
+    .vms-sponsor-inquiry__form-wrap,
+    .vms-sponsor-application-form,
+    .vms-sponsor-asset-form {
+        padding: 18px;
+    }
+
+    .vms-sponsor-package-card__header {
+        flex-direction: column;
+    }
+
+    .vms-sponsor-inquiry__primary,
+    .vms-sponsor-package-card__cta,
+    .vms-sponsor-inquiry__secondary {
+        width: 100%;
+    }
+
+    .vms-sponsor-inquiry__secondary-cta {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}

@@ -170,8 +170,9 @@ class VMS_Sponsorships_Shortcodes {
     }
 
     private function event_page_commerce_hook() {
-        if (function_exists('vms_event_details_commerce_hook')) {
-            return vms_event_details_commerce_hook();
+        $commerce_hook = vms_sponsorships_core_function('vms_event_details_commerce_hook');
+        if ($commerce_hook !== '') {
+            return $commerce_hook();
         }
 
         $allowed_hooks = array(
@@ -189,8 +190,9 @@ class VMS_Sponsorships_Shortcodes {
     }
 
     private function before_commerce_priority() {
-        return function_exists('vms_event_details_before_commerce_priority')
-            ? vms_event_details_before_commerce_priority()
+        $before_commerce_priority = vms_sponsorships_core_function('vms_event_details_before_commerce_priority');
+        return $before_commerce_priority !== ''
+            ? $before_commerce_priority()
             : 4;
     }
 

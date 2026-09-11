@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VMS Sponsorships
  * Description: Premium VMS add-on for sponsor applications, packages, event sponsorship assignments, controlled banner inventory, public sponsor displays, and newsletter-safe shortcodes.
- * Version: 0.1.27
+ * Version: 0.1.28
  * Author: VMS
  * Text Domain: vms-sponsorships
  */
@@ -11,11 +11,12 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('VMS_SPONSORSHIPS_VERSION', '0.1.27');
+define('VMS_SPONSORSHIPS_VERSION', '0.1.28');
 define('VMS_SPONSORSHIPS_FILE', __FILE__);
 define('VMS_SPONSORSHIPS_PATH', plugin_dir_path(__FILE__));
 define('VMS_SPONSORSHIPS_URL', plugin_dir_url(__FILE__));
 
+require_once VMS_SPONSORSHIPS_PATH . 'includes/core-compat.php';
 require_once VMS_SPONSORSHIPS_PATH . 'includes/class-vms-sponsorships-install.php';
 require_once VMS_SPONSORSHIPS_PATH . 'includes/class-vms-sponsorships-visibility-stats.php';
 require_once VMS_SPONSORSHIPS_PATH . 'includes/class-vms-sponsorships-repository.php';

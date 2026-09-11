@@ -4,7 +4,16 @@ Premium VMS add-on for sponsorship applications, packages, event/season assignme
 
 When VMS Core is active, Sponsorships registers inside the VMS admin menu. If the VMS parent menu is unavailable, the plugin falls back to its own standalone `Sponsorships` admin menu so operator access is preserved.
 
-Version: `0.1.27`
+Version: `0.1.28`
+
+## 0.1.28 Backstage Venue Manager compatibility
+
+- Prefer current `bvmgr_*` core providers while retaining guarded historical
+  `vms_*` fallbacks for older supported installations.
+- Register all seven administration pages through Backstage Venue Manager's
+  canonical registry without also creating physical fallback menu rows.
+- Preserve the standalone administration menu and TEC event-page placement
+  fallbacks when the corresponding core providers are unavailable.
 
 ## 0.1.27 seasonal assignment scope support
 

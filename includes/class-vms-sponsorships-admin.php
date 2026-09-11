@@ -15,6 +15,9 @@ class VMS_Sponsorships_Admin {
     /** @var VMS_Sponsorships_Notifications */
     private $notifications;
 
+    /** @var bool */
+    private $canonical_registry_registered = false;
+
     public function __construct(VMS_Sponsorships_Repository $repo, VMS_Sponsorships_Notifications $notifications) {
         $this->repo = $repo;
         $this->notifications = $notifications;
@@ -106,12 +109,13 @@ class VMS_Sponsorships_Admin {
     }
 
     public function register_vms_admin_pages() {
-        if (!function_exists('vms_register_admin_page')) {
+        $register_admin_page = vms_sponsorships_core_function('vms_register_admin_page');
+        if ($register_admin_page === '') {
             return;
         }
 
         foreach ($this->admin_pages() as $page) {
-            vms_register_admin_page(array(
+            $registered = $register_admin_page(array(
                 'id' => $page['slug'],
                 'slug' => $page['slug'],
                 'page_title' => $page['page_title'],
@@ -126,6 +130,9 @@ class VMS_Sponsorships_Admin {
                 'top_nav' => $page['slug'] === self::ROOT_SLUG,
                 'register' => true,
             ));
+            if ($registered !== false) {
+                $this->canonical_registry_registered = true;
+            }
         }
     }
 
@@ -134,9 +141,12 @@ class VMS_Sponsorships_Admin {
         $root_page = $pages[self::ROOT_SLUG];
 
         if ($this->has_vms_parent_menu()) {
+            if ($this->canonical_registry_registered) {
+                return;
+            }
             if (
                 (function_exists('vms_admin_registry_is_available') && vms_admin_registry_is_available())
-                || function_exists('vms_register_admin_page')
+                || vms_sponsorships_core_function('vms_register_admin_page') !== ''
             ) {
                 return;
             }
@@ -239,8 +249,9 @@ class VMS_Sponsorships_Admin {
             return (string) vms_admin_registry_parent_slug();
         }
 
-        if (function_exists('vms_admin_menu_parent_slug')) {
-            return (string) vms_admin_menu_parent_slug();
+        $parent_slug = vms_sponsorships_core_function('vms_admin_menu_parent_slug');
+        if ($parent_slug !== '') {
+            return (string) $parent_slug();
         }
 
         return 'vms-dashboard';
@@ -269,8 +280,9 @@ class VMS_Sponsorships_Admin {
     }
 
     private function page_url($slug, $args = array()) {
-        if (function_exists('vms_admin_ui_page_url')) {
-            return vms_admin_ui_page_url($slug, $args);
+        $page_url = vms_sponsorships_core_function('vms_admin_ui_page_url');
+        if ($page_url !== '') {
+            return $page_url($slug, $args);
         }
 
         $url = admin_url('admin.php?page=' . rawurlencode($slug));
@@ -342,13 +354,17 @@ class VMS_Sponsorships_Admin {
         $should_render_fallback_nav = true;
         if (function_exists('vms_admin_registry_should_render_fallback_nav')) {
             $should_render_fallback_nav = vms_admin_registry_should_render_fallback_nav();
-        } elseif (function_exists('vms_admin_ui_is_vms_screen') && vms_admin_ui_is_vms_screen()) {
-            $should_render_fallback_nav = false;
+        } else {
+            $is_vms_screen = vms_sponsorships_core_function('vms_admin_ui_is_vms_screen');
+            if ($is_vms_screen !== '' && $is_vms_screen()) {
+                $should_render_fallback_nav = false;
+            }
         }
 
-        if ($should_render_fallback_nav && function_exists('vms_admin_ui_render_top_nav')) {
+        $render_top_nav = vms_sponsorships_core_function('vms_admin_ui_render_top_nav');
+        if ($should_render_fallback_nav && $render_top_nav !== '') {
             echo '<section class="vms-sponsorships-admin-top-nav">';
-            vms_admin_ui_render_top_nav();
+            $render_top_nav();
             echo '</section>';
         }
 

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.28
+
+Canonical Backstage Venue Manager compatibility reconciliation.
+
+### Changed
+
+- Added package-local canonical-first resolution for the BVM administration
+  registry, page URLs/navigation, and event-commerce placement helpers.
+- Suppressed physical fallback menu rows only after canonical registration
+  succeeds, while preserving the standalone no-BVM menu.
+- Retained guarded historical VMS function fallbacks and all existing data,
+  capabilities, hooks, forms, and sponsorship workflows.
+
 ## 0.1.27
 
 Seasonal sponsorship assignment scope support before release-candidate packaging.
